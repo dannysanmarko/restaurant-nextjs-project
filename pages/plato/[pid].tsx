@@ -7,12 +7,9 @@ import Breadcrumb from "../../components/breadcrumb";
 import ProductsFeatured from "../../components/products-featured";
 import Gallery from "../../components/product-single/gallery";
 import Content from "../../components/product-single/content";
-import Description from "../../components/product-single/description";
-import Reviews from "../../components/product-single/reviews";
-import { server } from "../../utils/server";
 
-// types
-import { ProductType } from "types";
+
+
 import axios from "axios";
 
 type ProductPageType = {

@@ -1,11 +1,11 @@
 import Layout from "../layouts/Main";
 import Link from "next/link";
-import { ToastContainer, toast } from "react-toastify";
+import {toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+
 
 const RegisterPage = () => {
   const { register, handleSubmit, errors } = useForm();

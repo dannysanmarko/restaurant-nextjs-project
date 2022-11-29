@@ -1,5 +1,4 @@
 import ProductItem from './../../product-item';
-import { ProductTypeList } from 'types';
 
 // import Swiper core and required components
 import { Swiper, SwiperSlide } from 'swiper/react';

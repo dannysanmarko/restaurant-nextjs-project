@@ -32,7 +32,7 @@ const Products = ({ platosData }: any) => {
 
 export default Products;
 
-export async function getServerSideProps({ req, res }: any) {
+export async function getServerSideProps({  res }: any) {
   res.setHeader(
     "Cache-Control",
     "public, s-maxage=10, stale-while-revalidate=59"

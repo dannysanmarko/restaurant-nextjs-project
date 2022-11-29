@@ -1,27 +1,21 @@
 import { useState } from 'react';
-import productsColors from './../../../utils/data/products-colors';
-import productsSizes from './../../../utils/data/products-sizes';
-import CheckboxColor from './../../products-filter/form-builder/checkbox-color';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { some } from 'lodash';
 import { addProduct } from 'store/reducers/cart';
 import { toggleFavProduct } from 'store/reducers/user';
-import { ProductType, ProductStoreType } from 'types';
 import { RootState } from 'store';
 
-type ProductContent = {
-  product: any;
-}
 
 const Content = ({ platoId, nombrePlato, precioPlato, imagen  }: any) => {
   console.log("nombre" + nombrePlato)
   const dispatch = useDispatch();
   const [count, setCount] = useState<number>(1);
-  const [color, setColor] = useState<string>('');
-  const [itemSize, setItemSize] = useState<string>('');
+  // const [color, setColor] = useState<string>('');
+  // const [itemSize, setItemSize] = useState<string>('');
 
-  const onColorSet = (e: string) => setColor(e);
-  const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => setItemSize(e.target.value);
+  // const onColorSet = (e: string) => setColor(e);
+  // const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => setItemSize(e.target.value);
 
   const { favProducts } = useSelector((state: RootState) => state.user);
   const isFavourite = some(favProducts, platoId => platoId === platoId);
@@ -35,14 +29,14 @@ const Content = ({ platoId, nombrePlato, precioPlato, imagen  }: any) => {
   }
 
   const addToCart = () => {
-    const productToSave: ProductStoreType = { 
+    const productToSave: any = { 
       id: platoId,
       name: nombrePlato,
       thumb: imagen,
       price: precioPlato,
       count: count,
-      color: color,
-      size: itemSize
+      // color: color,
+      // size: itemSize
     }
 
     const productStore = {

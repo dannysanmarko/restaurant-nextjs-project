@@ -1,10 +1,9 @@
-import Layout from "../layouts/Main";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
-import { setToken, setUser } from "store/reducers/user";
+import { setUser } from "store/reducers/user";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import jwt_decode from "jwt-decode";
