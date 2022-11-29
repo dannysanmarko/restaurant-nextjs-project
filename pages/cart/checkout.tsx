@@ -21,19 +21,19 @@ const CheckoutPage = () => {
       <section className="cart">
         <div className="container">
           <div className="cart__intro">
-            <h3 className="cart__title">Shipping and Payment</h3>
+            <h3 className="cart__title">Pago y envío</h3>
             <CheckoutStatus step="checkout" />
           </div>
 
           <div className="checkout-content">
             <div className="checkout__col-6">
               <div className="checkout__btns">
-                <button className="btn btn--rounded btn--yellow">Log in</button>
-                <button className="btn btn--rounded btn--border">Sign up</button>
+                {/* <button className="btn btn--rounded btn--yellow">Log in</button>
+                <button className="btn btn--rounded btn--border">Sign up</button> */}
               </div>
 
               <div className="block">
-                <h3 className="block__title">Shipping information</h3>
+                <h3 className="block__title">Informacion adicional requerida</h3>
                 <form className="form">
                   <div className="form__input-row form__input-row--two">
                     <div className="form__col">
@@ -133,11 +133,11 @@ const CheckoutPage = () => {
             
             <div className="checkout__col-2">
               <div className="block">
-                <h3 className="block__title">Your cart</h3>
+                <h3 className="block__title">Mi pedido</h3>
                 <CheckoutItems />
                 
                 <div className="checkout-total">
-                  <p>Total cost</p>
+                  <p>Total a pagar:</p>
                   <h3>${priceTotal}</h3>
                 </div>
               </div>
@@ -145,10 +145,10 @@ const CheckoutPage = () => {
           </div>
           
           <div className="cart-actions cart-actions--checkout">
-            <a href="/cart" className="cart__btn-back"><i className="icon-left"></i> Back</a>
+            <a href="/cart" className="cart__btn-back"><i className="icon-left"></i> Volver</a>
             <div className="cart-actions__items-wrapper">
-              <button type="button" className="btn btn--rounded btn--border">Continue shopping</button>
-              <button type="button" className="btn btn--rounded btn--yellow">Proceed to payment</button>
+              <button type="button" className="btn btn--rounded btn--border">Continuar comprando</button>
+              <button type="button" className="btn btn--rounded btn--yellow">Ir al pago!</button>
             </div>
           </div>
         </div>

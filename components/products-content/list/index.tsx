@@ -1,7 +1,5 @@
-import useSwr from "swr";
 import ProductItem from "../../product-item";
 import ProductsLoading from "./loading";
-import { ProductTypeList } from "types";
 import { useSelector } from "react-redux";
 import { RootState } from "store";
 
@@ -16,15 +14,15 @@ const ProductsContent = () => {
       {productList ? (
         <section className="products-list">
           {productList.map((item: any) => (
-            <ProductItem
-              idProduct={item.idProduct}
-              name={item.nombreProducto}
-              price={item.precio}
-              color={item.color}
-              currentPrice={item.precio}
-              key={item.idProduct}
-              images={item.images}
-            />
+             <ProductItem
+             idProduct={item.idPlato}
+             name={item.nombrePlato}
+             price={item.precioPlato}
+             color={item.color}
+             currentPrice={item.precioPlato}
+             key={item.idPlato}
+             images={item.imagen}
+           />
           ))}
         </section>
       ) : (

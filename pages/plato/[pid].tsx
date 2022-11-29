@@ -13,19 +13,27 @@ import { server } from "../../utils/server";
 
 // types
 import { ProductType } from "types";
+import axios from "axios";
 
 type ProductPageType = {
-  product: ProductType;
+  product: any;
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const pid = query.pid;
-  const res = await fetch(`${server}/api/product/${pid}`);
-  const product = await res.json();
+
+  //get cookie
+  // const token = req.cookies.tokenUser;
+  const url = `http://localhost:4000/client/getPlatosById/${pid}`; //
+  // const config = {
+  //   headers: { Authorization: `Bearer ${token}` },
+  // };
+
+  const resp = await axios(url);
+  let {listPlato} = (await resp.data) || [];
+  const product = listPlato
   return {
-    props: {
-      product,
-    },
+    props: { product }, // will be passed to the page component as props
   };
 };
 
@@ -39,8 +47,15 @@ const Product = ({ product }: ProductPageType) => {
       <section className="product-single">
         <div className="container">
           <div className="product-single__content">
-            <Gallery images={product.images} />
-            <Content product={product} />
+
+            {product.map((item: any) => (
+              <>
+             <Gallery images={item.imagen}/>
+             <Content platoId={item.idPlato} nombrePlato={item.nombrePlato} precioPlato={item.precioPlato} imagen={item.imagen}  />
+             </>
+          ))}  
+            
+   
           </div>
 
           <div className="product-single__info">
@@ -65,8 +80,8 @@ const Product = ({ product }: ProductPageType) => {
               </button>
             </div>
 
-            <Description show={showBlock === "description"} />
-            <Reviews product={product} show={showBlock === "reviews"} />
+            {/* <Description show={showBlock === "description"} /> */}
+            {/* <Reviews product={product} show={showBlock === "reviews"} /> */}
           </div>
         </div>
       </section>

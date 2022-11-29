@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async ({req}) => {
     };
   };
 
-const ActionTable = ({actionData} : any) => {
+const userTable = ({actionData} : any) => {
   const columns = [
     {
         field: 'idAction',
@@ -77,8 +77,8 @@ const ActionTable = ({actionData} : any) => {
 ];
   return (
     <AdminLayout>
-      <Breadcrumb>Admin / Table / ActionTable</Breadcrumb>
-      <h1>Action table</h1>
+      <Breadcrumb>Admin / Table / userTable</Breadcrumb>
+      <h1>User table</h1>
       <DataGrid
         rows={actionData}
         columns={columns}
@@ -93,4 +93,4 @@ const ActionTable = ({actionData} : any) => {
   );
 };
 
-export default ActionTable;
+export default userTable;

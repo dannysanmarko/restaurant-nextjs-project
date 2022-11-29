@@ -37,9 +37,9 @@ const ProductItem = ({
           <i className="icon-heart"></i>
         </button>
 
-        <Link href={`/product/${idProduct}`}>
+        <Link href={`/plato/${idProduct}`}>
           <a>
-            <img src={images ? images[0] : ""} alt="product" />
+            <img src={images ? images : ""} alt="product" />
             {discount && <span className="product__discount">{discount}%</span>}
           </a>
         </Link>

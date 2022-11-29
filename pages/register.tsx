@@ -14,20 +14,26 @@ const RegisterPage = () => {
   const onSubmit = async (data: any) => {
     //localhost:4000/auth/register/createUser
     const URL = "http://localhost:4000/auth/register/createUser";
-    const res = await axios.post(URL, {
+    await axios.post(URL, {
       email: data.email,
       password: data.password,
-    });
-    console.log(res.data);
-    if (res.status === 200 || 201) {
-      toast.success(res.data.message);
+      userName: data.userName,
+      phoneNumber: data.phoneNumber
+    }).then( (res ) => {
+      if (res.status === 200 || 201) {
+        toast.success(res.data.message);
+  
+        setTimeout(() => {
+          router.push("/login");
+        }, 3000);
+      } else {
+        toast.error(res?.data.response.error);
+      }
+    })
 
-      setTimeout(() => {
-        router.push("/login");
-      }, 3000);
-    } else {
-      // toast.error(res?.data.response.error);
-    }
+    // !userName || !email || !phoneNumber || !password
+    
+   
   };
   return (
     <Layout>
@@ -36,20 +42,20 @@ const RegisterPage = () => {
           <div className="back-button-section">
             <Link href="/">
               <a>
-                <i className="icon-left"></i> Back to home
+                <i className="icon-left"></i> Volver a la pagina principal
               </a>
             </Link>
           </div>
 
           <div className="form-block">
             <h2 className="form-block__title">
-              Create an account and discover the benefits
+              Crea una cuenta para comenzar a disfrutar de nuestros mejores platos! 😋
             </h2>
-            <p className="form-block__description">
+            {/* <p className="form-block__description">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s
-            </p>
+            </p> */}
 
             <form className="form" onSubmit={handleSubmit(onSubmit)}>
               <div className="form__input-row">
@@ -67,15 +73,10 @@ const RegisterPage = () => {
 
                 {errors.email && errors.email.type === "required" && (
                   <p className="message message--error">
-                    This field is required
+                    Es requerido, no puede estar en blanco!
                   </p>
                 )}
 
-                {errors.email && errors.email.type === "pattern" && (
-                  <p className="message message--error">
-                    Please write a valid email
-                  </p>
-                )}
               </div>
 
               <div className="form__input-row">
@@ -88,44 +89,53 @@ const RegisterPage = () => {
                 />
                 {errors.password && errors.password.type === "required" && (
                   <p className="message message--error">
-                    This field is required
+                    Es requerido, no puede estar en blanco!
                   </p>
                 )}
               </div>
 
-              <div className="form__info">
-                <div className="checkbox-wrapper">
-                  <label
-                    htmlFor="check-signed-in"
-                    className={`checkbox checkbox--sm`}
-                  >
-                    <input
-                      name="signed-in"
-                      type="checkbox"
-                      id="check-signed-in"
-                      ref={register({ required: false })}
-                    />
-                    <span className="checkbox__check"></span>
-                    <p>
-                      I agree to the Google Terms of Service and Privacy Policy
-                    </p>
-                  </label>
-                </div>
+              <div className="form__input-row">
+                <input
+                  className="form__input"
+                  type="text"
+                  placeholder="nombre"
+                  name="userName"
+                  ref={register({ required: true })}
+                />
+                {errors.password && errors.password.type === "required" && (
+                  <p className="message message--error">
+                    Es requerido, no puede estar en blanco!
+                  </p>
+                )}
+              </div>
+
+              <div className="form__input-row">
+                <input
+                  className="form__input"
+                  type="text"
+                  placeholder="número de teléfono"
+                  name="phoneNumber"
+                  ref={register({ required: true })}
+                />
+                {errors.password && errors.password.type === "required" && (
+                  <p className="message message--error">
+                    Es requerido, no puede estar en blanco!
+                  </p>
+                )}
               </div>
 
               <button
                 type="submit"
                 className="btn btn--rounded btn--yellow btn-submit"
               >
-                Sign up
+                Registrarse
               </button>
-
               <p className="form__signup-link">
-                <Link href="/login">
-                  <a href="#">Are you already a member?</a>
-                </Link>
+               ¿Ya estas registrado? <Link href="/login">Entra!</Link>
               </p>
+             
             </form>
+           
           </div>
         </div>
       </section>

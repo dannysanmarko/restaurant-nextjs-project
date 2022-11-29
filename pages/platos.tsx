@@ -9,19 +9,20 @@ import { useEffect } from "react";
 import { setProduct } from "store/reducers/product";
 
 const Products = ({ platosData }: any) => {
-  const { listPlatos } = platosData;
-  console.log(platosData.length);
+  const { listPlatoss } = platosData;
+  const totalPlatos = listPlatoss.length
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setProduct(platosData));
-  }, [platosData]);
+    dispatch(setProduct(listPlatoss));
+  }, [listPlatoss]);
   return (
     <Layout>
       <Breadcrumb />
       <section className="products-page">
         <div className="container">
           <ProductsFilter />
-          <ProductsContent />
+          <ProductsContent totalPlatos={totalPlatos}/>
         </div>
       </section>
       <Footer />
@@ -38,7 +39,7 @@ export async function getServerSideProps({ req, res }: any) {
   );
   //get cookie
   // const token = req.cookies.tokenUser;
-  const url = "http://localhost:4000/client/getPlatos";
+  const url = "http://localhost:4000/client/getPlatos"; //http://localhost:4000/client/getPlatosById/idPlato
   // const config = {
   //   headers: { Authorization: `Bearer ${token}` },
   // };

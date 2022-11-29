@@ -1,14 +1,14 @@
 import { useState } from "react";
 import List from "./list";
 
-const ProductsContent = () => {
+const ProductsContent = ({totalPlatos} : any) => {
   const [orderProductsOpen, setOrderProductsOpen] = useState(false);
 
   return (
     <section className="products-content">
       <div className="products-content__intro">
         <h2>
-          Nuestros platos: <span>(133)</span>
+          Nuestros platos: <span>({totalPlatos})</span>
         </h2>
         <button
           type="button"

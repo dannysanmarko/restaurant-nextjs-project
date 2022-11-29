@@ -12,9 +12,6 @@ type ProductType = {
   size: string;
 };
 
-type ToggleFavType = {
-  idProduct: string;
-};
 
 interface UserSliceTypes {
   user: any;
@@ -45,7 +42,7 @@ const userSlice = createSlice({
     logoutUser(state) {
       state.user = {};
     },
-    toggleFavProduct(state, action: PayloadAction<ToggleFavType>) {
+    toggleFavProduct(state, action: PayloadAction<any>) {
       const index = state.favProducts.includes(action.payload.idProduct);
 
       if (!index) {

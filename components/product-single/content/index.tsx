@@ -10,10 +10,11 @@ import { ProductType, ProductStoreType } from 'types';
 import { RootState } from 'store';
 
 type ProductContent = {
-  product: ProductType;
+  product: any;
 }
 
-const Content = ({ product }: ProductContent) => {
+const Content = ({ platoId, nombrePlato, precioPlato, imagen  }: any) => {
+  console.log("nombre" + nombrePlato)
   const dispatch = useDispatch();
   const [count, setCount] = useState<number>(1);
   const [color, setColor] = useState<string>('');
@@ -23,22 +24,22 @@ const Content = ({ product }: ProductContent) => {
   const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => setItemSize(e.target.value);
 
   const { favProducts } = useSelector((state: RootState) => state.user);
-  const isFavourite = some(favProducts, productId => productId === product.id);
+  const isFavourite = some(favProducts, platoId => platoId === platoId);
 
   const toggleFav = () => {
     dispatch(toggleFavProduct(
       { 
-        id: product.id,
+        id: platoId,
       }
     ))
   }
 
   const addToCart = () => {
     const productToSave: ProductStoreType = { 
-      id: product.id,
-      name: product.name,
-      thumb: product.images ? product.images[0] : '',
-      price: product.currentPrice,
+      id: platoId,
+      name: nombrePlato,
+      thumb: imagen,
+      price: precioPlato,
       count: count,
       color: color,
       size: itemSize
@@ -55,23 +56,23 @@ const Content = ({ product }: ProductContent) => {
   return (
     <section className="product-content">
       <div className="product-content__intro">
-        <h5 className="product__id">Product ID:<br></br>{product.id}</h5>
+        <h5 className="product__id">Product ID:<br></br>{platoId}</h5>
         <span className="product-on-sale">Sale</span>
-        <h2 className="product__name">{product.name}</h2>
+        <h2 className="product__name">{nombrePlato}</h2>
 
         <div className="product__prices">
-          <h4>${ product.currentPrice }</h4>
-          {product.discount &&
+          <h4>${ precioPlato }</h4>
+          {/* {product.discount &&
             <span>${ product.price }</span>
-          }
+          } */}
         </div>
       </div>
 
       <div className="product-content__filters">
         <div className="product-filter-item">
-          <h5>Color:</h5>
+          {/* <h5>Color:</h5> */}
           <div className="checkbox-color-wrapper">
-            {productsColors.map(type => (
+            {/* {productsColors.map(type => (
               <CheckboxColor 
                 key={type.id} 
                 type={'radio'} 
@@ -80,11 +81,11 @@ const Content = ({ product }: ProductContent) => {
                 valueName={type.label}
                 onChange={onColorSet} 
               />
-            ))}
+            ))} */}
           </div>
         </div>
         <div className="product-filter-item">
-          <h5>Size: <strong>See size table</strong></h5>
+          {/* <h5>Size: <strong>See size table</strong></h5>
           <div className="checkbox-color-wrapper">
             <div className="select-wrapper">
               <select onChange={onSelectChange}>
@@ -94,7 +95,7 @@ const Content = ({ product }: ProductContent) => {
                 ))}
               </select>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="product-filter-item">
           <h5>Quantity:</h5>

@@ -21,7 +21,7 @@ if (process.browser) {
 }
 
 type ProductsCarouselType = {
-  products: ProductTypeList[]
+  products: any[]
 }
 
 const ProductsCarousel = ({ products }: ProductsCarouselType) => {
@@ -37,16 +37,16 @@ const ProductsCarousel = ({ products }: ProductsCarouselType) => {
       slidesPerView={slidesPerView} 
       className="swiper-wrapper">
         {products.map(item => (
-          <SwiperSlide key={item.id}>
+          <SwiperSlide key={item.idPlato}>
             <ProductItem 
-              id={item.id} 
-              name={item.name}
-              price={item.price}
+              idProduct={item.idPlato} 
+              name={item.nombrePlato}
+              price={item.precioPlato}
               color={item.color}
               discount={item.discount}
-              currentPrice={item.currentPrice}
-              key={item.id}
-              images={item.images} 
+              currentPrice={item.precioPlato}
+              key={item.idPlato}
+              images={item.imagen} 
             />
           </SwiperSlide>
         ))}

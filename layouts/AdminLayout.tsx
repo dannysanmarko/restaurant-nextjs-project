@@ -1,6 +1,7 @@
 import Head from "next/head";
-import AdminHeader from "c";
+import AdminHeader from '../components/admin-header/index'
 import { useRouter } from "next/router";
+import React from "react";
 
 type LayoutType = {
   title?: string;

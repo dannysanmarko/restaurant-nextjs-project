@@ -1,0 +1,29 @@
+name: Node.js CI - CD
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        node-version: [16.18.0]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm install -g yarn
+      - run: yarn global add pm2
+      - run: yarn
+      - run: yarn build
+      # - run: pm2 start yarn --name "nextjs" --interpreter bash -- start
+      - run: pm2 restart nextjs

@@ -27,9 +27,6 @@ const LoginPage = () => {
       password: data.password,
     });
 
-    // const config = {
-    //   headers: { Authorization: `Bearer ${res.data.tokenUser}` },
-    // };
     const decoded: any = jwt_decode(res.data.tokenUser);
     const user = {
       idUser: decoded.idUser,
@@ -38,11 +35,7 @@ const LoginPage = () => {
       idRol: decoded.idRol,
       token: res.data.tokenUser,
     };
-    // console.log(decoded);
-    // const url = `http://localhost:4000/user/adminRole/getUserById/${decoded.idUser}`;
-    // const userTokenRes = await axios(url, config);
-    // const { userName } = userTokenRes.data.listUser;
-    // dispatch(setUser({ user }));
+   
 
     if (res.status === 200) {
       dispatch(setUser({ user }));
@@ -56,8 +49,6 @@ const LoginPage = () => {
     } else {
       toast.error(res.data.message);
     }
-
-    // console.log(res);
   };
 
   return (
@@ -156,17 +147,8 @@ const LoginPage = () => {
                   href="/forgot-password"
                   className="form__info__forgot-password"
                 >
-                  Forgot password?
+                  Olvide mi contraseña
                 </a>
-              </div>
-
-              <div className="form__btns">
-                <button type="button" className="btn-social fb-btn">
-                  <i className="icon-facebook"></i>Facebook
-                </button>
-                <button type="button" className="btn-social google-btn">
-                  <img src="/images/icons/gmail.svg" alt="gmail" /> Gmail
-                </button>
               </div>
 
               <button
@@ -177,7 +159,7 @@ const LoginPage = () => {
               </button>
 
               <p className="form__signup-link">
-                Not a member yet? <a href="/register">Sign up</a>
+               ¿Aun no te registras? <Link href="/register">Registrarse!</Link>
               </p>
             </form>
           </div>

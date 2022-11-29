@@ -8,7 +8,9 @@ import { useRouter } from "next/router";
 import { RootState } from "store";
 import axios from "axios";
 import { logoutUser } from "store/reducers/user";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 type HeaderType = {
   isErrorPage?: Boolean;
@@ -18,7 +20,7 @@ const Header = ({ isErrorPage }: HeaderType) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { user } = useSelector((state: RootState) => state.user);
-  const { name, token } = user?.user || {};
+  const { name, token, idRol } = user?.user || {};
 
   const { cartItems } = useSelector((state: RootState) => state.cart);
   const arrayPaths = ["/"];
@@ -71,8 +73,40 @@ const Header = ({ isErrorPage }: HeaderType) => {
   useOnClickOutside(navRef, closeMenu);
   useOnClickOutside(searchRef, closeSearch);
 
+  const handleAdminNavigate = () => {
+    try {
+    if (idRol != 1) {
+      toast.error('no tienes permiso con tu rol:' + idRol)
+     
+    }
+    else {
+      toast.success('Accediendo a entorno privado')
+      setTimeout(() => {
+        router.push('/admin')
+      }, 3000);
+    }
+  } catch {
+    toast.error('se produjo un error, contacta al administrador')
+  }
+    
+  }
+
   return (
     <header className={`site-header ${!onTop ? "site-header--fixed" : ""}`}>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {/* Same as */}
+      <ToastContainer />
       <div className="container">
         <Link href="/">
           <a>
@@ -89,9 +123,8 @@ const Header = ({ isErrorPage }: HeaderType) => {
           <Link href="/platos">
             <a>Platos</a>
           </Link>
-          <Link href="/admin">
-            <a>Admin</a>
-          </Link>
+          
+            <a onClick={handleAdminNavigate} style={{cursor: 'pointer'}}>Admin</a>
 
           <button className="site-nav__btn">
             <p>Account</p>
