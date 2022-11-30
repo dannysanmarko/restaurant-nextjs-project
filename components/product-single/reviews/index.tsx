@@ -1,13 +1,9 @@
 import ReviewsList from './reviews-list';
 import Punctuation from './punctuation';
-import { ProductType } from 'types';
+import React from 'react'
 
-type ReviewsProductType = {
-  show: boolean;
-  product: ProductType
-}
 
-const Reviews = ({ show, product }: ReviewsProductType) => {
+const Reviews = ({ show, product }: any) => {
   const style = {
     display: show ? 'flex' : 'none',
   }
