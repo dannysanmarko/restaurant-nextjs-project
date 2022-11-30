@@ -1,12 +1,8 @@
-import axios from "axios";
-import { useRouter } from "next/router";
-import { Controller, useForm } from "react-hook-form";
+import {  useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
-import { toast, ToastContainer } from "react-toastify";
+import {  ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RootState } from "store";
-import MenuItem from '@mui/material/MenuItem';
-import InputLabel from '@mui/material/InputLabel';
 
 const AddPlato = () => {
     const { productList } = useSelector((state: RootState) => state.product);
@@ -14,8 +10,7 @@ const AddPlato = () => {
     console.log(productList)
     const { user } = useSelector((state: RootState) => state.user);
     const { token } = user?.user || {};
-    const router = useRouter()
-    const { register, handleSubmit, control }: any = useForm();
+    const { register, handleSubmit }: any = useForm();
     const onSubmit = async (data: any) => {
         console.log(data)
         // const config = {
@@ -62,7 +57,7 @@ const AddPlato = () => {
                 <h1>nombre plato</h1>
                 
                 <div className="form__input-row">
-                    <select {...register("nombrePlato")} name="nombrePlato" className="form__input" onChange={ e => }>
+                    <select {...register("nombrePlato")} name="nombrePlato" className="form__input" >
                         
 
                     </select>

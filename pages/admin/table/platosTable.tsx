@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { RootState } from "store";
 
-export const getServerSideProps: GetServerSideProps = async ({req}) => {
+export const getServerSideProps: GetServerSideProps = async () => {
     const res = await axios.get(`http://localhost:4000/client/getPlatos`)
     let platosData = (await res.data) || [];
     console.log(platosData)

@@ -1,7 +1,4 @@
-import { omit } from "lodash";
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setProduct } from "store/reducers/product";
+import { useState } from "react";
 
 import List from "./list";
 
