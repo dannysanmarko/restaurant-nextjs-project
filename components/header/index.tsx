@@ -92,9 +92,6 @@ const Header = ({ isErrorPage }: HeaderType) => {
     try {
       if (!token) {
         toast.error('debes iniciar sesion primero')
-        setTimeout(() => {
-          router.push("/login")
-        }, 3000);
       } else {
         router.push('/platos')
       }
@@ -121,8 +118,8 @@ const Header = ({ isErrorPage }: HeaderType) => {
         <Link href="/">
           <a>
             <h1 className="site-logo">
-              <img src="https://i.imgur.com/1lQd8jB.png" alt="logo" style={{width: '150px', padding: '0px'}} />
-              Siglo XXI
+              {/* <img src="https://i.imgur.com/1lQd8jB.png" alt="logo" style={{width: '150px', padding: '0px'}} />
+              Siglo XXI */}
             </h1>
           </a>
         </Link>
@@ -176,6 +173,8 @@ const Header = ({ isErrorPage }: HeaderType) => {
                   )}
                 </button>
               </Link>
+
+              
               <Link href={"/account"}>
                 <div style={{ padding: "4px", cursor: "pointer" }}>
                   <i className="icon-avatar"></i>

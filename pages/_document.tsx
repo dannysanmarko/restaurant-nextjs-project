@@ -22,7 +22,6 @@ export default class CustomDocument extends Document<DocumentProps> {
     return (
       <html lang="en">
         <Head>
-
         </Head>
         <body>
           <Main />
