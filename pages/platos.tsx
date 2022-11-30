@@ -32,19 +32,19 @@ const Products = ({ platosData }: any) => {
 
 export default Products;
 
-export async function getServerSideProps({  res }: any) {
+export async function getServerSideProps({  res, req }: any) {
   res.setHeader(
     "Cache-Control",
     "public, s-maxage=10, stale-while-revalidate=59"
   );
   //get cookie
-  // const token = req.cookies.tokenUser;
+  const token = req.cookies.tokenUser;
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
   const url = "http://restaurantproject.duckdns.org:4000/client/getPlatos"; //http://restaurantproject.duckdns.org:4000/client/getPlatosById/idPlato
-  // const config = {
-  //   headers: { Authorization: `Bearer ${token}` },
-  // };
 
-  const resp = await axios(url);
+  const resp = await axios(url, config);
   let platosData = (await resp.data) || [];
 
   // console.log(resp);

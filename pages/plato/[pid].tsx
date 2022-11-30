@@ -16,17 +16,17 @@ type ProductPageType = {
   product: any;
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = async ({ query, req }) => {
   const pid = query.pid;
 
   //get cookie
-  // const token = req.cookies.tokenUser;
+  const token = req.cookies.tokenUser;
   const url = `http://restaurantproject.duckdns.org:4000/client/getPlatosById/${pid}`; //
-  // const config = {
-  //   headers: { Authorization: `Bearer ${token}` },
-  // };
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
 
-  const resp = await axios(url);
+  const resp = await axios(url, config);
   let {listPlato} = (await resp.data) || [];
   const product = listPlato
   return {
