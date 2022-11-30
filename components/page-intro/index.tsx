@@ -16,6 +16,7 @@ const PageIntro = () => {
             <div className="container">
               <div className="page-intro__slide__content">
                 <h2>Ven a disfrutar de nuestros mejores platos</h2>
+                <h2>v.11/30/2022</h2>
                 <Link href="/products">
                   <a className="btn-shop">
                     <i className="icon-right"></i>Revisar catalogo!
