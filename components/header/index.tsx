@@ -74,7 +74,7 @@ const Header = ({ isErrorPage }: HeaderType) => {
   const handleAdminNavigate = () => {
     try {
     if (idRol != 1) {
-      toast.error('no tienes permiso con tu rol:' + idRol)
+      toast.error('no tienes permiso con tu rol')
      
     }
     else {
@@ -87,6 +87,23 @@ const Header = ({ isErrorPage }: HeaderType) => {
     toast.error('se produjo un error, contacta al administrador')
   }
     
+  }
+
+  const handlePlatosNavigate = () => {
+    try {
+      if (idRol != 1) {
+        toast.error('no tienes permiso con tu rol')
+       
+      }
+      else {
+        toast.success('Accediendo a entorno privado')
+        setTimeout(() => {
+          router.push('/admin')
+        }, 3000);
+      }
+    } catch {
+      toast.error('se produjo un error, contacta al administrador')
+    }
   }
 
   return (
@@ -103,8 +120,6 @@ const Header = ({ isErrorPage }: HeaderType) => {
         pauseOnHover
         theme="light"
       />
-      {/* Same as */}
-      <ToastContainer />
       <div className="container">
         <Link href="/">
           <a>
@@ -118,9 +133,10 @@ const Header = ({ isErrorPage }: HeaderType) => {
           ref={navRef}
           className={`site-nav ${menuOpen ? "site-nav--open" : ""}`}
         >
-          <Link href="/platos">
-            <a>Platos</a>
-          </Link>
+          
+
+            <a onClick={handlePlatosNavigate} style={{cursor: 'pointer'}}>Platos</a>
+          
           
             <a onClick={handleAdminNavigate} style={{cursor: 'pointer'}}>Admin</a>
 

@@ -43,7 +43,7 @@ const LoginPage = () => {
       toast.success(res.data.message);
 
       setTimeout(() => {
-        router.push("/account");
+        router.push("/");
       }, 3000);
     } else {
       toast.error(res.data.message);
@@ -64,8 +64,6 @@ const LoginPage = () => {
         pauseOnHover
         theme="light"
       />
-      {/* Same as */}
-      <ToastContainer />
       <section className="form-page">
         <div className="container">
           <div className="back-button-section">

@@ -1,10 +1,14 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { EffectFade, Navigation } from "swiper";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { RootState } from "store";
 
 SwiperCore.use([EffectFade, Navigation]);
 
 const PageIntro = () => {
+  const { user } = useSelector((state: RootState) => state.user);
+  const { token} = user?.user || {};
   return (
     <section className="page-intro">
       <Swiper navigation effect="fade" className="swiper-wrapper">
@@ -16,12 +20,15 @@ const PageIntro = () => {
             <div className="container">
               <div className="page-intro__slide__content">
                 <h2>Ven a disfrutar de nuestros mejores platos</h2>
-                <h2>v.11/30/2022</h2>
-                <Link href="/products">
+                { token ? <Link href="/platos">
                   <a className="btn-shop">
                     <i className="icon-right"></i>Revisar catalogo!
                   </a>
-                </Link>
+                </Link> : <a className="btn-shop">
+                    <i className="icon-right"></i>Logueate para revisar catalogo!
+                  </a>
+                  }
+                
               </div>
             </div>
           </div>
@@ -35,11 +42,14 @@ const PageIntro = () => {
             <div className="container">
               <div className="page-intro__slide__content">
                 <h2>Los mejores descuentos en nuestro local</h2>
-                <Link href="/products">
+                { token ? <Link href="/platos">
                   <a className="btn-shop">
                     <i className="icon-right"></i>Revisar catalogo!
                   </a>
-                </Link>
+                </Link> : <a className="btn-shop">
+                    <i className="icon-right"></i>Logueate para revisar catalogo!
+                  </a>
+                  }
               </div>
             </div>
           </div>
