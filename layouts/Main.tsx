@@ -7,7 +7,7 @@ type LayoutType = {
   children?: React.ReactNode;
 };
 
-export default ({ children, title = "Next.js Ecommerce" }: LayoutType) => {
+export default ({ children, title = "11/30/2022 | Restaurant APP" }: LayoutType) => {
   const router = useRouter();
   const pathname = router.pathname;
 

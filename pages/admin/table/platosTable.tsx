@@ -10,10 +10,14 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { RootState } from "store";
 
-export const getServerSideProps: GetServerSideProps = async () => {
-    const res = await axios.get(`http://restaurantproject.duckdns.org:4000/client/getPlatos`)
+export const getServerSideProps: GetServerSideProps = async ({req}) => {
+
+    const token = req.cookies.tokenUser;
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const res = await axios.get(`http://restaurantproject.duckdns.org:4000/client/getPlatos`, config)
     let platosData = (await res.data) || [];
-    console.log(platosData)
     return {
       props: {
         platosData,

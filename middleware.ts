@@ -36,5 +36,6 @@ export const config = {
     "/account/:path*",
     "/products/:path*",
     "/cart/:path*",
+    "/platos/:path*"
   ],
 };

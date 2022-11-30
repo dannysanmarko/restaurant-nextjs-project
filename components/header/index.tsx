@@ -89,17 +89,15 @@ const Header = ({ isErrorPage }: HeaderType) => {
     
   }
 
-  const handlePlatosNavigate = () => {
+  const handlePlatosNavigate = () => { 
     try {
-      if (idRol != 1) {
-        toast.error('no tienes permiso con tu rol')
-       
-      }
-      else {
-        toast.success('Accediendo a entorno privado')
+      if (!token) {
+        toast.error('debes iniciar sesion primero')
         setTimeout(() => {
-          router.push('/admin')
+          router.push("/login")
         }, 3000);
+      } else {
+        router.push('/platos')
       }
     } catch {
       toast.error('se produjo un error, contacta al administrador')
@@ -124,7 +122,7 @@ const Header = ({ isErrorPage }: HeaderType) => {
         <Link href="/">
           <a>
             <h1 className="site-logo">
-              <Logo />
+              <img src="https://i.imgur.com/1lQd8jB.png" alt="logo" style={{width: '150px', padding: '0px'}} />
               Siglo XXI
             </h1>
           </a>
