@@ -39,7 +39,7 @@ export async function getServerSideProps({  res }: any) {
   );
   //get cookie
   // const token = req.cookies.tokenUser;
-  const url = "http://localhost:4000/client/getPlatos"; //http://localhost:4000/client/getPlatosById/idPlato
+  const url = "http://restaurantproject.duckdns.org:4000/client/getPlatos"; //http://restaurantproject.duckdns.org:4000/client/getPlatosById/idPlato
   // const config = {
   //   headers: { Authorization: `Bearer ${token}` },
   // };

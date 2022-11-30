@@ -19,8 +19,8 @@ const LoginPage = () => {
   const router = useRouter();
 
   const onSubmit = async (data: LoginMail) => {
-    //localhost:4000/auth/register/createUser
-    const URL = "http://localhost:4000/auth/login";
+    //restaurantproject.duckdns.org:4000/auth/register/createUser
+    const URL = "http://restaurantproject.duckdns.org:4000/auth/login";
     const res = await axios.post(URL, {
       email: data.email,
       password: data.password,

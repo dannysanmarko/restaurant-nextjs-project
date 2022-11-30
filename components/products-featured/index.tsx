@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const ProductsFeatured = () => {
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
-  const resp = useSwr('http://localhost:4000/client/getPlatos', fetcher);
+  const resp = useSwr('http://restaurantproject.duckdns.org:4000/client/getPlatos', fetcher);
   let platosData = resp.data || [];
   const { listPlatoss } = platosData;
 

@@ -23,7 +23,7 @@ const AddPlato = () => {
         //         cantidadPersonas: data.cantidadPersonas
         //     }
         // };
-        // const URL = "http://localhost:4000/client/clientRole/crearPedido/";
+        // const URL = "http://restaurantproject.duckdns.org:4000/client/clientRole/crearPedido/";
         // const res = await axios.post(URL, config)
 
 
