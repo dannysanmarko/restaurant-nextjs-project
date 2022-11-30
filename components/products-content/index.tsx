@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { omit } from "lodash";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setProduct } from "store/reducers/product";
+
 import List from "./list";
 
 const ProductsContent = ({totalPlatos} : any) => {
   const [orderProductsOpen, setOrderProductsOpen] = useState(false);
+ 
 
   return (
     <section className="products-content">

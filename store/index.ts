@@ -33,7 +33,7 @@ const makeStore = ({ isServer }: { isServer: Boolean }) => {
     //If it's on client side, create a store which will persist
     const persistConfig = {
       key: "shoppingcart",
-      whitelist: ["cart", "user"], // only counter will be persisted, add other reducers if needed
+      whitelist: ["cart", "user", "product"], // only counter will be persisted, add other reducers if needed
       storage, // if needed, use a safer storage
     };
 

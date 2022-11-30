@@ -4,18 +4,18 @@ import Breadcrumb from "../components/breadcrumb";
 import ProductsFilter from "../components/products-filter";
 import ProductsContent from "../components/products-content";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import  { useDispatch } from "react-redux";
+import React, {useEffect } from 'react'
 import { setProduct } from "store/reducers/product";
 
 const Products = ({ platosData }: any) => {
   const { listPlatoss } = platosData;
   const totalPlatos = listPlatoss.length
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setProduct(listPlatoss));
-  }, [listPlatoss]);
+  }, [totalPlatos]);
+ 
   return (
     <Layout>
       <Breadcrumb />
@@ -46,7 +46,6 @@ export async function getServerSideProps({  res }: any) {
 
   const resp = await axios(url);
   let platosData = (await resp.data) || [];
-  console.log(platosData)
 
   // console.log(resp);
   return {

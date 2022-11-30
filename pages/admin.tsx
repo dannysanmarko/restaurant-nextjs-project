@@ -5,6 +5,7 @@ import { RootState } from 'store';
 
 const Admin = () => {
 
+
   const { user } = useSelector((state: RootState) => state.user);
   const {  idRol } = user?.user || {};
 
