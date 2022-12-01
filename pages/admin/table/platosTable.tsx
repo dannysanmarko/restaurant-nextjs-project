@@ -16,7 +16,7 @@ export const getServerSideProps: GetServerSideProps = async ({req}) => {
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
-    const res = await axios.get(`http://restaurantproject.duckdns.org:4000/client/getPlatos`, config)
+    const res = await axios.get(`https://api.restaurantproject.duckdns.org/client/getPlatos`, config)
     let platosData = (await res.data) || [];
     return {
       props: {

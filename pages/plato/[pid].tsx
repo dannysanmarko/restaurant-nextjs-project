@@ -21,7 +21,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query, req }) => 
 
   //get cookie
   const token = req.cookies.tokenUser;
-  const url = `http://restaurantproject.duckdns.org:4000/client/getPlatosById/${pid}`; //
+  const url = `https://api.restaurantproject.duckdns.org/client/getPlatosById/${pid}`; //
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };

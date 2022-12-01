@@ -14,7 +14,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
         headers: { Authorization: `Bearer ${token}` },
     };
 
-    const res = await axios.get(`http://restaurantproject.duckdns.org:4000/adminRole/readAction`, config)
+    const res = await axios.get(`https://api.restaurantproject.duckdns.org/adminRole/readAction`, config)
     let actionData = (await res.data.results.data) || [];
     return {
         props: {

@@ -13,7 +13,7 @@ const RegisterPage = () => {
 
   const onSubmit = async (data: any) => {
     //restaurantproject.duckdns.org:4000/auth/register/createUser
-    const URL = "http://restaurantproject.duckdns.org:4000/auth/register/createUser";
+    const URL = "https://api.restaurantproject.duckdns.org/auth/register/createUser";
     await axios.post(URL, {
       email: data.email,
       password: data.password,
