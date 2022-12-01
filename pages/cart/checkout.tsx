@@ -89,7 +89,7 @@ const CheckoutPage = () => {
             
             <div className="checkout__col-4">
               <div className="block">
-                <h3 className="block__title">Payment method</h3>
+                <h3 className="block__title">Metodo de pago</h3>
                 <ul className="round-options round-options--three">
                   <li className="round-item">
                     <img src="/images/logos/paypal.png" alt="Paypal" />
@@ -152,7 +152,7 @@ const CheckoutPage = () => {
             <a href="/cart" className="cart__btn-back"><i className="icon-left"></i> Volver</a>
             <div className="cart-actions__items-wrapper">
               <button type="button" className="btn btn--rounded btn--border">Continuar comprando</button>
-              <Link type="button" className="btn btn--rounded btn--yellow" href={`/checkout/${randomNumber}`}>Ir al pago!</Link>
+              <Link type="button" className="btn btn--rounded btn--yellow" href={`/cart/checkout/${randomNumber}`}>Ir al pago!</Link>
             </div>
           </div>
         </div>

@@ -6,6 +6,7 @@ const CheckoutItems = () => {
   return (
     <ul className="checkout-items">
       {cartItems.map(item => (
+        <div key={item.id}>
         <li className="checkout-item">
           <div className="checkout-item__content">
             <div className="checkout-item__img">
@@ -19,6 +20,7 @@ const CheckoutItems = () => {
           </div>
           <h3>${item.price}</h3>
         </li>
+        </div>
       ))}
     </ul>
   )
