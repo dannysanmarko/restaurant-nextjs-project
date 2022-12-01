@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import CheckoutStatus from '../../components/checkout-status';
 import CheckoutItems from '../../components/checkout/items';
 import { RootState } from 'store';
+import Link from 'next/link';
+import { random } from 'lodash';
 
 const CheckoutPage = () => {
 
@@ -15,6 +17,8 @@ const CheckoutPage = () => {
 
     return totalPrice;
   })
+
+  const randomNumber = random(29399, 129386776761);
 
   return (
     <Layout>
@@ -148,7 +152,7 @@ const CheckoutPage = () => {
             <a href="/cart" className="cart__btn-back"><i className="icon-left"></i> Volver</a>
             <div className="cart-actions__items-wrapper">
               <button type="button" className="btn btn--rounded btn--border">Continuar comprando</button>
-              <button type="button" className="btn btn--rounded btn--yellow">Ir al pago!</button>
+              <Link type="button" className="btn btn--rounded btn--yellow" href={`/checkout/${randomNumber}`}>Ir al pago!</Link>
             </div>
           </div>
         </div>
