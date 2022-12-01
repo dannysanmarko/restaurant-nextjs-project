@@ -1,5 +1,5 @@
 import React from 'react'
-import { Page, Text, View, Document, StyleSheet, PDFDownloadLink } from '@react-pdf/renderer';
+import { Page, Text, View, Document} from '@react-pdf/renderer';
 const BoletaComponent = ({ id, cartItems }: any) => {
     console.log(id)
     console.log(cartItems)
