@@ -10,9 +10,9 @@ import BoletaComponent from '../../components/boleta/Boleta'
 const Boleta = () => {
     const router = useRouter()
     const { cartItems } = useSelector((state: RootState) => state.cart);
-    const { cid } = router.query
-    console.log(cartItems)
-
+    let { cid } = router.query
+    if (!cid )
+    return cid = '123456'
 
 
     return (
